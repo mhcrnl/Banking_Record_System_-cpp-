@@ -39,10 +39,13 @@ class RecInfo
 public:
 	RecInfo();
 
-	RecInfo(int account, 
-		const string& first, const string& last, double balance);
+	RecInfo(const string& first, const string& last, 
+		double balance);
 	
-	void addRecord();
+	void showOption();
+
+	void addRecord(const string& first, const string& last, 
+		double balance);
 
 	void printData();
 
@@ -57,8 +60,8 @@ public:
 private:
 	//forward_list<int> data;
 	map<int, Customer> dataBase;
-	int acctNo;
-
+	unsigned int acctNo = 0;
+	map<int, string> menu;
 };
 #endif
 
