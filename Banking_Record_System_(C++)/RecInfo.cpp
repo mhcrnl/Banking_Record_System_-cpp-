@@ -36,6 +36,12 @@ void RecInfo::showOption()
 		cout << setw(8) << option.first << "-->" << option.second << endl;
 }
 
+void RecInfo::showOption(const map <unsigned int, string>& select)
+{
+	for (auto option : select)
+		cout << setw(8) << option.first << "-->" << option.second << endl;
+}
+
 /*
 For this feature void read_data() function
 has been used to add banking record into the file.
@@ -79,6 +85,22 @@ void RecInfo::printData()
 		cerr << "Error in opening! File Not Found!!\n";
 }
 
+unsigned int RecInfo::displayAndChoose()
+{
+	cout << "There are " << dataBase.size() << " record(s) in file.\n";
+
+	cout << "Displaying all accounts: \n";
+	for (auto accout : dataBase)
+		cout << "Accout No. " << accout.first << endl;
+
+	cout << "Enter record number to search: ";
+
+	unsigned int acct;
+	cin >> acct;
+
+	return acct;
+}
+
 /*
 When the function for this feature is first executed, 
 it shows the total records in the file,
@@ -90,16 +112,7 @@ the banking record system project in C++ displays the message
 */
 void RecInfo::search()
 {
-	cout << "There are " << dataBase.size() << " record(s) in file.\n";
-	
-	cout << "Displaying all accounts: \n";
-	for (auto accout : dataBase)
-		cout << "Accout No. " << accout.first << endl;
-
-	cout << "Enter record number to search: ";
-
-	unsigned int acct;
-	cin >> acct;
+	unsigned int acct = displayAndChoose();
 
 	if (dataBase.find(acct) != dataBase.cend())
 		cout << "User exist in our database. " 
@@ -123,25 +136,47 @@ it displays the message – “Error in opening! File Not Found!!”
 */
 void RecInfo::editRecord()
 {
+	unsigned int acct = displayAndChoose();
+
+	if (dataBase.find(acct) != dataBase.cend())
+	{
+		cout << "Please select data that you would like to modify:\n";
+		map<unsigned int, string> editMenu;
+		
+
+		cout << "\nEnter data to modify: \n";
+
+
+	}
+	else
+		cerr << "Error in opening! File Not Found!!\n";
 
 }
 
 /*
-
 First of all, when the function of this feature is executed, 
 it shows all the records in the file, 
 and the user can enter the record number to delete. 
 
 If the record was not found,
 this banking record system project in C++ displays the message
-– “Error in opening! File Not Found!!”*/
+– “Error in opening! File Not Found!!”
+*/
 void RecInfo::deleteRecord()
 {
+	unsigned int acct = displayAndChoose();
 
+	if (dataBase.find(acct) != dataBase.cend())
+	{
+
+	}
+	else
+		cerr << "Error in opening! File Not Found!!\n";
 }
 
 RecInfo::~RecInfo()
 {
-
+	dataBase.clear();
+	menu.clear();
 }
 

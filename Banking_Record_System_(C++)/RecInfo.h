@@ -3,9 +3,7 @@
 
 #include <iostream>
 #include <string>
-#include <forward_list>
 #include <map>
-#include <vector>
 
 using namespace std;
 
@@ -44,12 +42,14 @@ public:
 	
 	void showOption();
 
+	void showOption(const map <unsigned int, string>& select);
+
 	void addRecord(const string& first, const string& last, 
 		double balance);
 
 	void printData();
 
-	//void showAcct();
+	unsigned int displayAndChoose();
 
 	void search();
 
