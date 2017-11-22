@@ -79,17 +79,6 @@ void RecInfo::printData()
 		cerr << "Error in opening! File Not Found!!\n";
 }
 
-//void RecInfo::showAcct()
-//{
-//
-//	cout << "There are " << menu.size() << " record(s) in file.\n";
-//
-//	cout << "Displaying all accounts: \n";
-//	for (auto accout : dataBase)
-//		cout << "Accout No. " << accout.first << endl;
-//
-//}
-
 /*
 When the function for this feature is first executed, 
 it shows the total records in the file,
@@ -113,8 +102,8 @@ void RecInfo::search()
 	cin >> acct;
 
 	if (dataBase.find(acct) != dataBase.cend())
-		cout << "User exist in our database.\
-			For more information, please choose 2.";
+		cout << "User exist in our database. " 
+		<< "For more information, please choose 2.";
 	else
 		cerr << "Error in opening! File Not Found!!\n";
 }
