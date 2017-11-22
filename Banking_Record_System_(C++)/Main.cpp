@@ -14,11 +14,37 @@ int main()
 		cout << "Enter your choice: ";
 		cin >> response;
 
-		if (cin.fail())
+		if (response == 1)
 		{
-			cerr << "Please enter a valid number\n";
-			response = 0;
+			cout << "Enter Account No. : ";
+			unsigned int acct; cin >> acct;
+			
+			cout << "\nEnter First Name: ";
+			string first; cin >> first;
+
+			cout << "\nEnter Last Name: ";
+			string last; cin >> last;
+
+			cout << "\nEnter Balance: ";
+			double balance; cin >> balance;
+
+			creditUnion.addRecord(first, last, balance);
+			cout << "You are now in our database.\n";
+
 		}
+		else if (response == 2)
+			creditUnion.printData();
+		else if (response == 3)
+			creditUnion.search();
+		else if (response == 4)
+			creditUnion.editRecord();
+		else if (response == 5)
+			creditUnion.deleteRecord();
+		else
+			cout << "\nThank you for choosing our bank.\n";
+		
+		string nextPrompt(40, '-');
+		cout << "\n\n" << nextPrompt << "\n\n";
 	}
 
 

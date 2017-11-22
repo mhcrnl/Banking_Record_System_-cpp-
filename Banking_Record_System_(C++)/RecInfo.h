@@ -49,6 +49,8 @@ public:
 
 	void printData();
 
+	//void showAcct();
+
 	void search();
 
 	void editRecord();
@@ -59,8 +61,9 @@ public:
 
 private:
 	//forward_list<int> data;
-	map<int, Customer> dataBase;
+	map<unsigned int, Customer> dataBase;
 	unsigned int acctNo = 0;
+
 	map<int, string> menu;
 };
 #endif
