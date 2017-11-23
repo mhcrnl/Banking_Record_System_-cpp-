@@ -2,6 +2,7 @@
 
 int main()
 {
+	//Hast at least one person
 	RecInfo creditUnion("Alan", "Turning", 1000.00);
 
 	unsigned int response = 0;
@@ -15,22 +16,18 @@ int main()
 		cin >> response;
 
 		if (response == 1)
-		{
-			cout << "Enter Account No. : ";
-			unsigned int acct; cin >> acct;
-			
-			cout << "\nEnter First Name: ";
+		{		
+			cout << "Enter First Name: ";
 			string first; cin >> first;
 
-			cout << "\nEnter Last Name: ";
+			cout << "Enter Last Name: ";
 			string last; cin >> last;
 
-			cout << "\nEnter Balance: ";
+			cout << "Enter Balance: ";
 			double balance; cin >> balance;
 
 			creditUnion.addRecord(first, last, balance);
 			cout << "You are now in our database.\n";
-
 		}
 		else if (response == 2)
 			creditUnion.printData();
