@@ -2,6 +2,7 @@
 
 int main()
 {
+	//Hast at least one person
 	RecInfo creditUnion("Alan", "Turning", 1000.00);
 
 	unsigned int response = 0;

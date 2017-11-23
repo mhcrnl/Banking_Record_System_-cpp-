@@ -201,18 +201,31 @@ void RecInfo::deleteRecord()
 
 void RecInfo::setName(int input, unsigned int acct)
 {
-	string newName;
-	cout << "Enter new name: ";
-	cin >> newName;
+	string newFirst, newLast;
+
 
 	if (input == 1)
-		dataBase[acct].setFirst(newName);
+	{
+		cout << "Enter new first name: ";
+		cin >> newFirst;
+		dataBase[acct].setFirst(newFirst);
+	}
 	else if (input == 2)
-		dataBase[acct].setLast(newName);
+	{
+		cout << "Enter new last name: ";
+		cin >> newLast;
+		dataBase[acct].setLast(newLast);
+	}
 	else
 	{
-		dataBase[acct].setFirst(newName);
-		dataBase[acct].setLast(newName);
+		cout << "Enter both names: ";
+		cout << "First Name: ";
+		cin >> newFirst;
+		cout << "Last Name: ";
+		cin >> newLast;
+
+		dataBase[acct].setFirst(newFirst);
+		dataBase[acct].setLast(newLast);
 	}
 }
 

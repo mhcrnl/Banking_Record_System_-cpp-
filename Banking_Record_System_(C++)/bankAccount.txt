@@ -1,0 +1,17 @@
+"Albert" "Einstein" 7998.19
+"Issac" "Newton" 1732.88
+"Galileo" "Galilei" 2445.58
+"Marie" "Curie" 4877.95
+"Charles" "Darwin" 963864
+"Michael" "Faraday" -2290.43
+"Nikola" "Tesla" 1474.79
+"James C." "Maxwell" 4054.45
+"Gregor" "Mendel" 2038.56
+"Robert" "Boyle" 905.47
+"Alexander" "Fleming" 6272.02
+"James" "Watt" 4381.74
+"Carl F." "Gauss" -6229.08
+"Leonhard" Euler" 8725.54
+"Richard" "Feynman" -4171.48
+
+#FirstName, LastName, Balance

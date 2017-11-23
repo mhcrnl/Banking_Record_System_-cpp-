@@ -1,0 +1,17 @@
+"Grace" Hopper" 5470.70  
+"Ada" "Lovelance" -6207.15
+"Edsger W." "Dijkstra" 7037.16
+"Steve" "Wozniak" -5929.66
+"barbara" "Liskov" -5988.90
+"John V." "Neumann" -9181.05
+"Bjarne" "Stroustrup" 7580.28
+"Linus" "Torvalds" -3834.08
+"Bill" "Gates" -6248.44
+"Dennis" "Ritchie" 1067.58
+"Gregory" "Adelson-Velsky" 9163.22
+"Evgenil" "Landis" 3518.69
+"Joseph" "Kruskal" -712.83
+"Ken" Thompson" -2454.37
+"Yukihiro" "Matsumoto" -7403.67
+
+#FirstName LastName balance
