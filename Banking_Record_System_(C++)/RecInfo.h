@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include <queue>
 
 using namespace std;
 
@@ -21,6 +22,7 @@ public:
 	double getBalance() const { return balance; }
 
 	//mutators
+	void setFirst(string first) { fName = first; }
 	void setLast(string last) { lName = last; }
 	void setBalance(double newBalance) { balance = newBalance; }
 
@@ -39,6 +41,8 @@ public:
 
 	RecInfo(const string& first, const string& last, 
 		double balance);
+
+	void showMenu();
 	
 	void showOption();
 
@@ -57,13 +61,17 @@ public:
 
 	void deleteRecord();
 
+	void setName(int input, unsigned int acct);
+
+	void setBalance(int input, unsigned int acct);
+
 	~RecInfo();
 
 private:
 	//forward_list<int> data;
 	map<unsigned int, Customer> dataBase;
 	unsigned int acctNo = 0;
-
+	queue<unsigned int> reuse;
 	map<int, string> menu;
 };
 #endif

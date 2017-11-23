@@ -5,13 +5,6 @@
 RecInfo::RecInfo()
 {
 	dataBase[acctNo] = Customer();
-
-	menu[1] = "Add Record to File";
-	menu[2] = "Show Record from File";
-	menu[3] = "Search Record from File";
-	menu[4] = "Update Record";
-	menu[5] = "Delete Rercord";
-	menu[6] = "Exit";
 }
 
 //Overloaded Constructor
@@ -20,7 +13,10 @@ RecInfo::RecInfo(const string& first, const string& last,
 {
 	dataBase[acctNo] = Customer(first, last, balance);
 	acctNo++;
+}
 
+void RecInfo::showMenu()
+{
 	menu[1] = "Add Record to File";
 	menu[2] = "Show Record from File";
 	menu[3] = "Search Record from File";
@@ -29,12 +25,13 @@ RecInfo::RecInfo(const string& first, const string& last,
 	menu[6] = "Exit";
 }
 
-
 void RecInfo::showOption()
 {
+	showMenu();
 	for (auto option : menu)
 		cout << setw(8) << option.first << "-->" << option.second << endl;
 }
+
 
 void RecInfo::showOption(const map <unsigned int, string>& select)
 {
@@ -53,8 +50,17 @@ to be entered.
 void RecInfo::addRecord(const string& first, const string& last, 
 	double balance)
 {
-	dataBase[acctNo] = Customer(first, last, balance);
-	acctNo++;
+	if (reuse.empty())
+	{
+		dataBase[acctNo] = Customer(first, last, balance);
+		acctNo++;
+	}
+	else
+	{
+		dataBase[reuse.front()] = Customer(first, last, balance);
+		reuse.pop();
+	}
+
 }
 
 
@@ -142,10 +148,25 @@ void RecInfo::editRecord()
 	{
 		cout << "Please select data that you would like to modify:\n";
 		map<unsigned int, string> editMenu;
-		
+		editMenu[1] = "First Name";
+		editMenu[2] = "Last Name";
+		editMenu[3] = "Balance";
+		editMenu[4] = "Edit all";
+		showOption(editMenu);
 
+		unsigned int input;
 		cout << "\nEnter data to modify: \n";
+		cin >> input;
 
+		if (input == 1 || input == 2)
+			setName(input, acct);
+		else if (input == 3)
+			setBalance(input, acct);
+		else
+		{
+			setName(input, acct);
+			setBalance(input, acct);
+		}
 
 	}
 	else
@@ -168,10 +189,56 @@ void RecInfo::deleteRecord()
 
 	if (dataBase.find(acct) != dataBase.cend())
 	{
-
+		cout << "Please select data that you would like to remove: \n";
+		unsigned int removeAcct;
+		cin >> removeAcct;
+		dataBase.erase(removeAcct);
+		reuse.push(acct);
 	}
 	else
 		cerr << "Error in opening! File Not Found!!\n";
+}
+
+void RecInfo::setName(int input, unsigned int acct)
+{
+	string newName;
+	cout << "Enter new name: ";
+	cin >> newName;
+
+	if (input == 1)
+		dataBase[acct].setFirst(newName);
+	else if (input == 2)
+		dataBase[acct].setLast(newName);
+	else
+	{
+		dataBase[acct].setFirst(newName);
+		dataBase[acct].setLast(newName);
+	}
+}
+
+void RecInfo::setBalance(int input, unsigned int acct)
+{
+	cout << "Press 1 for deposit, and otherwise for withdrawal: ";
+	int depOrWit;
+	cin >> depOrWit;
+	
+	cout << "How much would you like to deposit/withdraw? ";
+	double amount;
+	cin >> amount;
+
+	if (depOrWit == 1)
+	{
+		cout << "You deposited $" << amount << endl;
+		amount += dataBase[acct].getBalance();
+		dataBase[acct].setBalance(amount);
+	}
+	else
+	{
+		cout << "You withdrew $" << amount << endl;
+		amount -= dataBase[acct].getBalance();
+		dataBase[acct].setBalance(amount);
+	}
+
 }
 
 RecInfo::~RecInfo()
